@@ -48,13 +48,15 @@ npm run preview
 
 ### Theme Colors 主题颜色
 
-Edit  `src/styles/variables.css`  to customize the theme colors. 编辑 `src/styles/variables.css` 修改主题颜色。
+- Edit  `src/styles/variables.css`  to customize the theme colors.
+- 编辑 `src/styles/variables.css` 修改主题颜色。
 
 ## Deployment 部署
 
 ### Static Hosting 静态托管
 
-The built dist/ directory can be deployed to any static hosting service: 构建后的 `dist/` 目录可以部署到任何静态托管服务：
+- The built dist/ directory can be deployed to any static hosting service: 
+- 构建后的 `dist/` 目录可以部署到任何静态托管服务：
 
 - Vercel
 - Netlify
