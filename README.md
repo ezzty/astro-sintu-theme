@@ -1,57 +1,65 @@
 # Astro Sintu Theme
 
-一个简洁的 Astro 博客主题，作者原创设计。
+A simple blog theme, optimized single-column layout for mobile/tablet，originally designed by the author.
 
-## 特性
+一个简洁的单栏 Astro 博客自适应主题，作者jin原创设计。
 
-- 🚀 基于 Astro 5.x，性能优异
+## Features 特性
+
+🚀 Powered by Astro 6.x – High performance guaranteed.
+
+🌙 Dark Mode Support – Seamless switching between light and dark themes.
+
+📱 Responsive Design – Fully optimized for mobile and diverse screen sizes.
+
+🎨 Clean & Elegant – Minimalist design focused on readability.
+
+📝 Markdown Blogging – Built-in support for Markdown-based content.
+
+- 🚀 基于 Astro 6.x，性能优异
 - 🌙 暗黑模式支持
 - 📱 响应式设计，移动端优化
 - 🎨 简洁优雅的设计风格
 - 📝 支持 Markdown 博客文章
 
-## 快速开始
+## Quick Start 快速开始 
 
 ```bash
-# 安装依赖
+# Install dependencies 安装依赖
 npm install
 
-# 开发模式
+# Start development server 开发模式
 npm run dev
 
-# 构建生产版本
+# Build for production 构建生产版本
 npm run build
 
-# 预览构建结果
+# Preview production build 预览构建结果
 npm run preview
 ```
+```bash
 
-## 配置
+## Configuration 配置
 
-### 网站信息
+### Image Processing 图片处理
+- Image Optimization: Automatically scale homepage thumbnails using Alibaba Cloud OSS image processing parameters.图片用阿里云oss自动添加参数能实现首页缩略图自动缩放；
 
-编辑 `astro.config.mjs` 或 `src/config.ts` 修改：
 
-- 网站标题
-- 网站描述
-- 作者信息
-- 社交链接
+### Theme Colors 主题颜色
 
-### 主题颜色
+Edit src/styles/variables.css to customize the theme colors. 编辑 `src/styles/variables.css` 修改主题颜色。
 
-编辑 `src/styles/variables.css` 修改主题颜色。
+## Deployment 部署
 
-## 部署
+### Static Hosting 静态托管
 
-### 静态托管
-
-构建后的 `dist/` 目录可以部署到任何静态托管服务：
+The built dist/ directory can be deployed to any static hosting service: 构建后的 `dist/` 目录可以部署到任何静态托管服务：
 
 - Vercel
 - Netlify
 - Cloudflare Pages
 - GitHub Pages
-- 阿里云 OSS
+- AWS AMPLIFY
 
 ### Docker
 
@@ -60,13 +68,13 @@ docker build -t astro-sintu-theme .
 docker run -p 8080:80 astro-sintu-theme
 ```
 
-## 技术栈
+## Tech Stack 技术栈
 
 - [Astro](https://astro.build/) - 静态站点生成器
 - TypeScript - 类型安全
 - CSS Variables - 主题定制
 
-## 许可证
+## License 许可证
 
 MIT
 
