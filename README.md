@@ -41,7 +41,9 @@ npm run preview
 ## Configuration 配置
 
 ### Image Processing 图片处理
-- Image Optimization: Automatically scale homepage thumbnails using Alibaba Cloud OSS image processing parameters.图片用阿里云oss自动添加参数能实现首页缩略图自动缩放；
+
+- Image Optimization: Automatically scale homepage thumbnails using Alibaba Cloud OSS image processing parameters.
+- 图片用阿里云oss自动添加参数能实现首页缩略图自动缩放；
 
 
 ### Theme Colors 主题颜色
