@@ -46,7 +46,7 @@ npm run preview
 
 ### Theme Colors 主题颜色
 
-Edit src/styles/variables.css to customize the theme colors. 编辑 `src/styles/variables.css` 修改主题颜色。
+Edit  `src/styles/variables.css`  to customize the theme colors. 编辑 `src/styles/variables.css` 修改主题颜色。
 
 ## Deployment 部署
 
