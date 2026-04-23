@@ -37,7 +37,6 @@ npm run build
 # Preview production build 预览构建结果
 npm run preview
 ```
-```bash
 
 ## Configuration 配置
 
