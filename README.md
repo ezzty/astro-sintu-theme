@@ -55,8 +55,8 @@ npm run preview
 
 ### Static Hosting 静态托管
 
-- The built dist/ directory can be deployed to any static hosting service: 
-- 构建后的 `dist/` 目录可以部署到任何静态托管服务：
+The built dist/ directory can be deployed to any static hosting service: 
+构建后的 `dist/` 目录可以部署到任何静态托管服务：
 
 - Vercel
 - Netlify
