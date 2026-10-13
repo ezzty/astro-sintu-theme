@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar.astro';
 import { getCollection } from 'astro:content';
 import { formatDate } from '../lib/utils';
 
-const posts = await getCollection('posts');
+const posts = (await getCollection('posts')).filter(post => !post.data.draft);
 
 // 按年份和月份分组
 const groupedPosts: Record<string, typeof posts> = {};
@@ -38,7 +38,7 @@ posts.sort((a, b) => {
               {posts.map((post) => (
                 <li>
                   <span class="archive-date">{formatDate(post.data.pubDate.toISOString())}</span>
-                  <a href={`/post/${post.id.replace('.md', '')}`}>{post.data.title}</a>
+                  <a href={`/post/${post.id.replace(/\.[^.]+$/, '')}`}>{post.data.title}</a>
                 </li>
               ))}
             </ul>

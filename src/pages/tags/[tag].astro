@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import NavBar from '../../components/NavBar.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const posts = (await getCollection('posts')).filter(post => !post.data.draft);
   
   const tagSet = new Set<string>();
   posts.forEach(post => {
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
   }));
 }
 
-const allPosts = await getCollection('posts');
+const allPosts = (await getCollection('posts')).filter(post => !post.data.draft);
 const { tag } = Astro.params;
 const decodedTag = decodeURIComponent(tag!);
 
@@ -40,7 +40,7 @@ const posts = allPosts
           {posts.map(post => (
             <article class="post-item">
               <h2 class="post-title-small">
-                <a href={`/post/${post.id.replace('.md', '')}`}>{post.data.title}</a>
+                <a href={`/post/${post.id.replace(/\.[^.]+$/, '')}`}>{post.data.title}</a>
               </h2>
               <div class="post-meta">
                 <span>{new Date(post.data.pubDate).toISOString().split('T')[0]}</span>

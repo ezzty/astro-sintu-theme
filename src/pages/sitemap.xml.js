@@ -76,7 +76,7 @@ export async function GET() {
     })),
     // 所有文章
     ...publishedPosts.map(post => ({
-      loc: `${siteUrl}/post/${post.id.replace('.md', '')}`,
+      loc: `${siteUrl}/post/${post.id.replace(/\.[^.]+$/, '')}`,
       lastmod: new Date(post.data.pubDate).toISOString(),
       changefreq: 'weekly',
       priority: 0.6,

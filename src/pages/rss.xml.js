@@ -33,7 +33,7 @@ export async function GET(context) {
         title: post.data.title,
         description: description,
         pubDate: post.data.pubDate,
-        link: `/post/${post.id.replace('.md', '')}`,
+        link: `/post/${post.id.replace(/\.[^.]+$/, '')}`,
         author: post.data.author || 'Jin',
       };
     })),

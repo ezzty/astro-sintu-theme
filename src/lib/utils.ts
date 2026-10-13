@@ -21,36 +21,32 @@ export function extractFirstImage(content: string): string | null {
   return null;
 }
 
-// 格式化日期：2026-04-18
+// 格式化日期：2026-04-18（只显示日期）
 export function formatDate(date: string | Date): string {
   const d = typeof date === 'string' ? new Date(date) : date;
   return d.toISOString().split('T')[0];
 }
 
 // 截取摘要（减少 4 个字符）
-export function truncateExcerpt(excerpt: string, length: number = 116): string {
+export function truncateExcerpt(excerpt: string, length: number = 67): string {
   if (!excerpt) return '';
   return excerpt.slice(0, length);
 }
 
-// 生成页码列表（最多显示 5 个页码）
+// 生成页码列表（最多显示 5 个页码，移动端 CSS 隐藏为 3 个）
 export function getPageNumbers(current: number, total: number): number[] {
   if (total <= 5) {
-    // 总页数 <= 5，显示所有页码
     return Array.from({ length: total }, (_, i) => i + 1);
   }
   
   if (current <= 3) {
-    // 当前页在前 3 页，显示 1-5
     return [1, 2, 3, 4, 5];
   }
   
   if (current >= total - 2) {
-    // 当前页在后 3 页，显示最后 5 页
     return [total - 4, total - 3, total - 2, total - 1, total];
   }
   
-  // 当前页在中间，显示当前页前后各 2 页
   return [current - 2, current - 1, current, current + 1, current + 2];
 }
 
@@ -66,7 +62,6 @@ export function getRandomThumbnailIndex(seed: string): number {
   let hash = 0;
   for (let i = 0; i < seed.length; i++) {
     hash = ((hash << 5) - hash) + seed.charCodeAt(i);
-    hash = hash & hash;
   }
   return Math.abs(hash) % 6;
 }
@@ -104,6 +99,21 @@ export function countWords(content: string): number {
 }
 
 // 格式化文章列表
+export interface PostData {
+  title: string;
+  pubDate: Date;
+  author?: string;
+  description?: string;
+  thumbnail?: string;
+  draft?: boolean;
+}
+
+export interface PostEntry {
+  id: string;
+  data: PostData;
+  body?: string;
+}
+
 export interface FormattedPost {
   title: string;
   slug: string;
@@ -120,7 +130,7 @@ export interface FormatPostsResult {
   currentPage: number;
 }
 
-export function formatPosts(posts: any[], pageSize: number, page: number = 1): FormatPostsResult {
+export function formatPosts(posts: PostEntry[], pageSize: number, page: number = 1): FormatPostsResult {
   const sortedPosts = posts.sort((a, b) => {
     return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
   });
@@ -147,11 +157,11 @@ export function formatPosts(posts: any[], pageSize: number, page: number = 1): F
     
     return {
       title: post.data.title,
-      slug: post.id.replace('.md', ''),
+      slug: post.id.replace(/\.[^.]+$/, ''),
       author: post.data.author || 'Jin',
       pubDate: post.data.pubDate.toISOString(),
       wordCount,
-      excerpt: post.data.description || plainText.slice(0, 70),
+      excerpt: post.data.description || plainText.slice(0, 67),
       thumbnail,
     };
   });
