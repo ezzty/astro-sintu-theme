@@ -25,6 +25,10 @@ backup/
 # Environment
 .env
 .env.local
+*.key
+*.pem
+*.p12
+credentials.json
 
 # Astro
 .astro/
